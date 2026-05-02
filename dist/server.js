@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -17,9 +8,9 @@ const database_1 = require("./config/database");
 const env_1 = require("./config/env");
 const node_dns_1 = __importDefault(require("node:dns"));
 node_dns_1.default.setServers(['8.8.8.8', '8.8.4.4']);
-const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
+const startServer = async () => {
     try {
-        yield (0, database_1.connectDB)();
+        await (0, database_1.connectDB)();
         app_1.default.listen(env_1.config.PORT, () => {
             console.log(`Server running on port ${env_1.config.PORT}`);
         });
@@ -28,5 +19,5 @@ const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
         console.error('Failed to start server:', error);
         process.exit(1);
     }
-});
+};
 startServer();
