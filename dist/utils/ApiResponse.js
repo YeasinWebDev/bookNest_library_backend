@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class ApiResponse {
     success;
     message;
@@ -12,5 +10,5 @@ class ApiResponse {
         this.success = statusCode < 400;
     }
 }
-exports.default = ApiResponse;
+export default ApiResponse;
 //# sourceMappingURL=ApiResponse.js.map

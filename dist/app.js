@@ -1,30 +1,25 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const cors_1 = __importDefault(require("cors"));
-const notFound_1 = require("./middlewares/notFound");
-const errorHandler_1 = require("./middlewares/errorHandler");
-const route_1 = require("./modules/book/route");
-const route_2 = require("./modules/user/route");
-const app = (0, express_1.default)();
+import express from 'express';
+import cors from 'cors';
+import { notFound } from './middlewares/notFound';
+import { errorHandler } from './middlewares/errorHandler';
+import { bookRoutes } from './modules/book/route';
+import { userRoutes } from './modules/user/route';
+const app = express();
 const corsOptions = {
     origin: ["http://localhost:3000"],
     credentials: true,
 };
-app.use((0, cors_1.default)(corsOptions));
-app.use(express_1.default.json());
-app.use(express_1.default.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
     res.send({
         message: "Server is running",
     });
 });
-app.use('/api/users', route_2.userRoutes);
-app.use('/api/books', route_1.bookRoutes);
-app.use(notFound_1.notFound);
-app.use(errorHandler_1.errorHandler);
-exports.default = app;
+app.use('/api/users', userRoutes);
+app.use('/api/books', bookRoutes);
+app.use(notFound);
+app.use(errorHandler);
+export default app;
 //# sourceMappingURL=app.js.map
