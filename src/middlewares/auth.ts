@@ -9,9 +9,9 @@ import { config } from '../config/env.js';
 interface AuthRequest extends Request {
   user?: any;
 }
-
+ 
 export const authenticate = (req: AuthRequest, res: Response, next: NextFunction): void => {
-  const token = req.header('Authorization')?.replace('Bearer ', '');
+  const token = req.header('Authorization') || req.cookies.token;
 
   if (!token) {
     throw new ApiError(401, 'Access denied. No token provided.');

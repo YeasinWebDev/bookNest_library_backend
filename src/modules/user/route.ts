@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { signup, login, getProfile } from './controller.js';
+import { signup, login, getProfile, logout } from './controller.js';
 
 import { signupValidation, loginValidation } from './validation.js';
 
@@ -13,6 +13,8 @@ const router = Router();
 router.post('/signup', validate(signupValidation), signup);
 
 router.post('/login', validate(loginValidation), login);
+
+router.post('/logout', authenticate, logout);
 
 router.get('/profile', authenticate, getProfile);
 
