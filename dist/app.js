@@ -5,10 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const route_1 = __importDefault(require("./modules/user/route"));
-const route_2 = __importDefault(require("./modules/book/route"));
 const notFound_1 = require("./middlewares/notFound");
 const errorHandler_1 = require("./middlewares/errorHandler");
+const route_1 = require("./modules/book/route");
+const route_2 = require("./modules/user/route");
 const app = (0, express_1.default)();
 const corsOptions = {
     origin: ["http://localhost:3000"],
@@ -22,8 +22,8 @@ app.get("/", (req, res) => {
         message: "Server is running",
     });
 });
-app.use('/api/users', route_1.default);
-app.use('/api/books', route_2.default);
+app.use('/api/users', route_2.userRoutes);
+app.use('/api/books', route_1.bookRoutes);
 app.use(notFound_1.notFound);
 app.use(errorHandler_1.errorHandler);
 exports.default = app;
