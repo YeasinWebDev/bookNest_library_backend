@@ -1,12 +1,13 @@
-import { Router } from 'express';
-import { signup, login, getProfile, logout } from './controller';
-import { signupValidation, loginValidation } from './validation';
-import { authenticate } from '../../middlewares/auth';
-import { validate } from '../../middlewares/validate';
-const router = Router();
-router.post('/signup', validate(signupValidation), signup);
-router.post('/login', validate(loginValidation), login);
-router.post('/logout', authenticate, logout);
-router.get('/profile', authenticate, getProfile);
-export default router;
-//# sourceMappingURL=route.js.map
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const controller_1 = require("./controller");
+const validation_1 = require("./validation");
+const auth_1 = require("../../middlewares/auth");
+const validate_1 = require("../../middlewares/validate");
+const router = (0, express_1.Router)();
+router.post('/signup', (0, validate_1.validate)(validation_1.signupValidation), controller_1.signup);
+router.post('/login', (0, validate_1.validate)(validation_1.loginValidation), controller_1.login);
+router.post('/logout', auth_1.authenticate, controller_1.logout);
+router.get('/profile', auth_1.authenticate, controller_1.getProfile);
+exports.default = router;

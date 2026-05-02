@@ -1,18 +1,24 @@
-import jwt from 'jsonwebtoken';
-import ApiError from '../utils/ApiError.js';
-import { config } from '../config/env.js';
-export const authenticate = (req, res, next) => {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.authenticate = void 0;
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const ApiError_js_1 = __importDefault(require("../utils/ApiError.js"));
+const env_js_1 = require("../config/env.js");
+const authenticate = (req, res, next) => {
     const token = req.header('Authorization') || req.cookies.token;
     if (!token) {
-        throw new ApiError(401, 'Access denied. No token provided.');
+        throw new ApiError_js_1.default(401, 'Access denied. No token provided.');
     }
     try {
-        const decoded = jwt.verify(token, config.JWT_SECRET);
+        const decoded = jsonwebtoken_1.default.verify(token, env_js_1.config.JWT_SECRET);
         req.user = decoded;
         next();
     }
     catch (error) {
-        throw new ApiError(401, 'Invalid token.');
+        throw new ApiError_js_1.default(401, 'Invalid token.');
     }
 };
-//# sourceMappingURL=auth.js.map
+exports.authenticate = authenticate;

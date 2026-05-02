@@ -1,6 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class ApiError extends Error {
-    statusCode;
-    isOperational;
     constructor(statusCode, message, isOperational = true) {
         super(message);
         this.statusCode = statusCode;
@@ -8,5 +8,4 @@ class ApiError extends Error {
         Error.captureStackTrace(this, this.constructor);
     }
 }
-export default ApiError;
-//# sourceMappingURL=ApiError.js.map
+exports.default = ApiError;
