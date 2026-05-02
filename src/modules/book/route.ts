@@ -8,16 +8,14 @@ import { authenticate } from '../../middlewares/auth';
 
 import { validate } from '../../middlewares/validate'; 
 
-const router = Router();
+export const bookRoutes= Router();
 
-router.post('/', authenticate, validate(createBookValidation), createBook);
+bookRoutes.post('/', authenticate, validate(createBookValidation), createBook);
 
-router.get('/', getAllBooks);
+bookRoutes.get('/', getAllBooks);
 
-router.get('/:id', getBookById);
+bookRoutes.get('/:id', getBookById);
 
-router.put('/:id', authenticate, validate(updateBookValidation), updateBook);
+bookRoutes.put('/:id', authenticate, validate(updateBookValidation), updateBook);
 
-router.delete('/:id', authenticate, deleteBook);
-
-export default router;
+bookRoutes.delete('/:id', authenticate, deleteBook);

@@ -8,14 +8,12 @@ import { authenticate } from '../../middlewares/auth';
 
 import { validate } from '../../middlewares/validate';
 
-const router = Router();
+export const userRoutes = Router();
 
-router.post('/signup', validate(signupValidation), signup);
+userRoutes.post('/signup', validate(signupValidation), signup);
 
-router.post('/login', validate(loginValidation), login);
+userRoutes.post('/login', validate(loginValidation), login);
 
-router.post('/logout', authenticate, logout);
+userRoutes.post('/logout', authenticate, logout);
 
-router.get('/profile', authenticate, getProfile);
-
-export default router;
+userRoutes.get('/profile', authenticate, getProfile);

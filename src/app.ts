@@ -2,13 +2,11 @@ import express, { Request, Response } from 'express';
 
 import cors from 'cors';
 
-import userRoutes from './modules/user/route';
-
-import bookRoutes from './modules/book/route';
-
 import { notFound } from './middlewares/notFound';
 
 import { errorHandler } from './middlewares/errorHandler';
+import { bookRoutes } from './modules/book/route';
+import { userRoutes } from './modules/user/route';
 
 const app = express();
 
