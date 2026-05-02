@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { BookService } from './service.js';
+import { BookService } from './service';
 
-import { asyncHandler } from '../../utils/asyncHandler.js';
+import { asyncHandler } from '../../utils/asyncHandler';
 
-import ApiResponse from '../../utils/ApiResponse.js';
+import ApiResponse from '../../utils/ApiResponse';
 
 export const createBook = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
   const book = await BookService.createBook(req.body);

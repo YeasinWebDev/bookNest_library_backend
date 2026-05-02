@@ -1,4 +1,4 @@
-import { Book } from './model.js';
+import { Book } from './model';
 
 import {
   IBook,
@@ -7,10 +7,10 @@ import {
   IUpdateBook,
   IBookQuery,
   IBookPaginationResponse,
-} from './interface.js';
+} from './interface';
 
-import ApiError from '../../utils/ApiError.js';
-import { IUser } from '../user/interface.js';
+import ApiError from '../../utils/ApiError';
+import { IUser } from '../user/interface';
 
 export const categories = [
   'All Genres',

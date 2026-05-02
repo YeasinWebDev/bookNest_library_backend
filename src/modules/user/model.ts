@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-import { IUser } from './interface.js';
+import { IUser } from './interface';
 
 const userSchema = new Schema<IUser & Document>({
   name: { type: String, required: true },

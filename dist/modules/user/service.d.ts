@@ -1,4 +1,4 @@
-import { IUserResponse, ISignup, ILogin } from './interface.js';
+import { IUserResponse, ISignup, ILogin } from './interface';
 export declare class UserService {
     static signup(data: ISignup): Promise<{
         user: IUserResponse;

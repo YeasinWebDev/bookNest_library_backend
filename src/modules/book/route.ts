@@ -1,12 +1,12 @@
 import { Router } from 'express';
 
-import { createBook, getAllBooks, getBookById, updateBook, deleteBook } from './controller.js';
+import { createBook, getAllBooks, getBookById, updateBook, deleteBook } from './controller';
 
-import { createBookValidation, updateBookValidation } from './validation.js';
+import { createBookValidation, updateBookValidation } from './validation';
 
-import { authenticate } from '../../middlewares/auth.js';
+import { authenticate } from '../../middlewares/auth';
 
-import { validate } from '../../middlewares/validate.js'; 
+import { validate } from '../../middlewares/validate'; 
 
 const router = Router();
 

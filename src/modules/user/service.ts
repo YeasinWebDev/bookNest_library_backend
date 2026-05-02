@@ -2,13 +2,13 @@ import bcrypt from 'bcrypt';
 
 import jwt from 'jsonwebtoken';
 
-import { User } from './model.js';
+import { User } from './model';
 
-import { IUser, IUserResponse, ISignup, ILogin } from './interface.js';
+import { IUser, IUserResponse, ISignup, ILogin } from './interface';
 
-import { config } from '../../config/env.js';
+import { config } from '../../config/env';
 
-import ApiError from '../../utils/ApiError.js';
+import ApiError from '../../utils/ApiError';
 
 export class UserService {
   static async signup(data: ISignup): Promise<{ user: IUserResponse; token: string }> {

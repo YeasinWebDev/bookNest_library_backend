@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 
-import { UserService } from "./service.js";
+import { UserService } from "./service";
 
-import { asyncHandler } from "../../utils/asyncHandler.js";
+import { asyncHandler } from "../../utils/asyncHandler";
 
-import ApiResponse from "../../utils/ApiResponse.js";
+import ApiResponse from "../../utils/ApiResponse";
 
 export const signup = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
   const { user, token } = await UserService.signup(req.body);

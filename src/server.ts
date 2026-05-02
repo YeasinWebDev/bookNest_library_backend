@@ -1,8 +1,8 @@
-import app from './app.js';
+import app from './app';
 
-import { connectDB } from './config/database.js';
+import { connectDB } from './config/database';
 
-import { config } from './config/env.js';
+import { config } from './config/env';
 
 import dns from 'node:dns';
 dns.setServers(['8.8.8.8', '8.8.4.4']); 

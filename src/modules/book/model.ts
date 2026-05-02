@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-import { IBook } from './interface.js';
+import { IBook } from './interface';
 
 const bookSchema = new Schema<IBook & Document>({
   title: { type: String, required: true },

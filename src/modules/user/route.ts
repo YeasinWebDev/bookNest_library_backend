@@ -1,12 +1,12 @@
 import { Router } from 'express';
 
-import { signup, login, getProfile, logout } from './controller.js';
+import { signup, login, getProfile, logout } from './controller';
 
-import { signupValidation, loginValidation } from './validation.js';
+import { signupValidation, loginValidation } from './validation';
 
-import { authenticate } from '../../middlewares/auth.js';
+import { authenticate } from '../../middlewares/auth';
 
-import { validate } from '../../middlewares/validate.js';
+import { validate } from '../../middlewares/validate';
 
 const router = Router();
 

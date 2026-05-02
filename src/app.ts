@@ -2,13 +2,13 @@ import express, { Request, Response } from 'express';
 
 import cors from 'cors';
 
-import userRoutes from './modules/user/route.js';
+import userRoutes from './modules/user/route';
 
-import bookRoutes from './modules/book/route.js';
+import bookRoutes from './modules/book/route';
 
-import { notFound } from './middlewares/notFound.js';
+import { notFound } from './middlewares/notFound';
 
-import { errorHandler } from './middlewares/errorHandler.js';
+import { errorHandler } from './middlewares/errorHandler';
 
 const app = express();
 
