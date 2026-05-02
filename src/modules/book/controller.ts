@@ -43,6 +43,6 @@ export const updateBook = asyncHandler(async (req: Request, res: Response, next:
 });
 
 export const deleteBook = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
-  await BookService.deleteBook(req.params.id, req.user);
+  await BookService.deleteBook(req.params.id, (req as any).user);
   res.status(200).json(new ApiResponse(200, 'Book deleted successfully'));
 });

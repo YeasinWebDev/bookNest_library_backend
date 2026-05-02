@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import ApiError from '../utils/ApiError.js';
 import { config } from '../config/env.js';
 export const authenticate = (req, res, next) => {
-    const token = req.header('Authorization')?.replace('Bearer ', '');
+    const token = req.header('Authorization') || req.cookies.token;
     if (!token) {
         throw new ApiError(401, 'Access denied. No token provided.');
     }
