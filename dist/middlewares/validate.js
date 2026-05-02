@@ -16,3 +16,4 @@ const validate = (schema) => {
     };
 };
 exports.validate = validate;
+//# sourceMappingURL=validate.js.map

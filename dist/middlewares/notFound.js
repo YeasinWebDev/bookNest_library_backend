@@ -10,3 +10,4 @@ const notFound = (req, res, next) => {
     next(error);
 };
 exports.notFound = notFound;
+//# sourceMappingURL=notFound.js.map

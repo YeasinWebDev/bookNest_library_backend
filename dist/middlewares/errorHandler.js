@@ -15,3 +15,4 @@ const errorHandler = (err, req, res, next) => {
     res.status(statusCode).json(new ApiResponse_js_1.default(statusCode, message, null));
 };
 exports.errorHandler = errorHandler;
+//# sourceMappingURL=errorHandler.js.map

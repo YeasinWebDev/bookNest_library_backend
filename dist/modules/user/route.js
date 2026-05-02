@@ -11,3 +11,4 @@ exports.userRoutes.post('/signup', (0, validate_1.validate)(validation_1.signupV
 exports.userRoutes.post('/login', (0, validate_1.validate)(validation_1.loginValidation), controller_1.login);
 exports.userRoutes.post('/logout', auth_1.authenticate, controller_1.logout);
 exports.userRoutes.get('/profile', auth_1.authenticate, controller_1.getProfile);
+//# sourceMappingURL=route.js.map

@@ -32,3 +32,4 @@ exports.getProfile = (0, asyncHandler_1.asyncHandler)(async (req, res, next) => 
     const user = await service_1.UserService.getProfile(userId);
     res.status(200).json(new ApiResponse_1.default(200, "Profile retrieved successfully", user));
 });
+//# sourceMappingURL=controller.js.map
