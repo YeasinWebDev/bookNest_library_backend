@@ -1,6 +1,12 @@
-import { Book } from './model';
-import ApiError from '../../utils/ApiError';
-export const categories = [
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BookService = exports.categories = void 0;
+const model_1 = require("./model");
+const ApiError_1 = __importDefault(require("../../utils/ApiError"));
+exports.categories = [
     'All Genres',
     'Fiction',
     'Non-Fiction',
@@ -11,9 +17,9 @@ export const categories = [
     'Poetry',
     'Gastronomy',
 ];
-export class BookService {
+class BookService {
     static async createBook(data) {
-        const book = new Book(data);
+        const book = new model_1.Book(data);
         await book.save();
         return book;
     }
@@ -39,8 +45,8 @@ export class BookService {
         const currentPage = Math.max(1, page);
         const currentLimit = Math.max(1, limit);
         const skip = (currentPage - 1) * currentLimit;
-        const total = await Book.countDocuments(query);
-        const books = await Book.find(query)
+        const total = await model_1.Book.countDocuments(query);
+        const books = await model_1.Book.find(query)
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(currentLimit);
@@ -54,28 +60,29 @@ export class BookService {
         };
     }
     static async getBookById(id) {
-        const book = await Book.findById(id);
+        const book = await model_1.Book.findById(id);
         if (!book) {
-            throw new ApiError(404, 'Book not found');
+            throw new ApiError_1.default(404, 'Book not found');
         }
         return book;
     }
     static async updateBook(id, data) {
-        const book = await Book.findByIdAndUpdate(id, data, { new: true });
+        const book = await model_1.Book.findByIdAndUpdate(id, data, { new: true });
         if (!book) {
-            throw new ApiError(404, 'Book not found');
+            throw new ApiError_1.default(404, 'Book not found');
         }
         return book;
     }
     static async deleteBook(id, user) {
-        const isMyBook = await Book.findOne({ _id: id, user: user._id });
+        const isMyBook = await model_1.Book.findOne({ _id: id, user: user._id });
         if (!isMyBook) {
-            throw new ApiError(403, 'You are not allowed to delete this book');
+            throw new ApiError_1.default(403, 'You are not allowed to delete this book');
         }
-        const book = await Book.findByIdAndDelete(id);
+        const book = await model_1.Book.findByIdAndDelete(id);
         if (!book) {
-            throw new ApiError(404, 'Book not found');
+            throw new ApiError_1.default(404, 'Book not found');
         }
     }
 }
+exports.BookService = BookService;
 //# sourceMappingURL=service.js.map
